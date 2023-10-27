@@ -52,16 +52,12 @@
 
                 <ImageView
                     android:id="@+id/imgRGBR"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/seekbarImage"
                     android:background="#FF0000" />
 
                 <SeekBar
                     android:id="@+id/sbrRGBR"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
+                    style="@style/seekbar"/>
 
                 <TextView
                     android:id="@+id/lblRGBRValue"
@@ -77,15 +73,12 @@
 
                 <ImageView
                     android:id="@+id/imgRGBG"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/seekbarImage"
                     android:background="#00FF00" />
 
                 <SeekBar
                     android:id="@+id/sbrRGBG"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
+                    style="@style/seekbar"/>
 
                 <TextView
                     android:id="@+id/lblRGBGValue"
@@ -101,15 +94,12 @@
 
                 <ImageView
                     android:id="@+id/imgRGBB"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/seekbarImage"
                     android:background="#0000FF" />
 
                 <SeekBar
                     android:id="@+id/sbrRGBB"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
+                    style="@style/seekbar"/>
 
                 <TextView
                     android:id="@+id/lblRGBBValue"
@@ -219,7 +209,6 @@
                         <TextView
                             android:id="@+id/lblHSLPMaxValue"
                             style="@style/txtValueDouble" />
-
                     </TableRow>
 
                     <TableRow
@@ -256,8 +245,6 @@
                 <TextView
                     android:id="@+id/lblRGB2HSLH"
                     style="@style/SectionHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="@string/hslHTitle" />
 
                 <LinearLayout
@@ -268,7 +255,6 @@
                     <TextView
                         android:id="@+id/lblHSLH0Equation"
                         style="@style/txtEquation"
-                        android:layout_width="335dp"
                         android:text="@string/hslH0" />
 
                     <TextView
@@ -278,7 +264,7 @@
 
                 <TextView
                     android:id="@+id/lblHSLH0Calc"
-                    android:layout_width="wrap_content"
+                    style="@style/txtEquation"
                     android:layout_height="0dp" />
 
                 <TextView
@@ -350,7 +336,6 @@
                     <TextView
                         android:id="@+id/lblHSLS0Equation"
                         style="@style/txtEquation"
-                        android:layout_width="320dp"
                         android:text="@string/hslSL0" />
 
                     <TextView
