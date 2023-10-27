@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llvHSL2RGB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lblHSL2RGB"
+            style="@style/PageHeader"
+            android:text="@string/hsl2rgb_title" />
+
+        <Button
+            android:id="@+id/btnSwitchToRGB2HSL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/switchToRGB2HSL" />
+
+        <TableLayout
+            android:id="@+id/tblHSL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/trHSLH"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <SeekBar
+                    android:id="@+id/sbrHSLH"
+                    android:layout_width="335dp"
+                    android:layout_height="25dp"
+                    android:progressDrawable="@drawable/hsl_h"
+                    android:thumb="@drawable/hsl_thumb" />
+
+                <TextView
+                    android:id="@+id/lblHSLHValue"
+                    style="@style/txtValueInteger" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trHSLS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <SeekBar
+                    android:id="@+id/sbrHSLS"
+                    android:layout_width="335dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="5dp"
+                    android:progressDrawable="@drawable/hsl_s"
+                    android:thumb="@drawable/hsl_thumb" />
+
+                <TextView
+                    android:id="@+id/lblHSLSValue"
+                    style="@style/txtValueInteger" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trHSLL"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+                <SeekBar
+                    android:id="@+id/sbrHSLL"
+                    android:layout_width="335dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="5dp"
+                    android:progressDrawable="@drawable/hsl_l"
+                    android:thumb="@drawable/hsl_thumb" />
+
+                <TextView
+                    android:id="@+id/lblHSLLValue"
+                    style="@style/txtValueInteger" />
+            </TableRow>
+
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/imgColourHSL"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/lblChromaTitle"
+            style="@style/SectionHeader"
+            android:text="@string/chromaTitle" />
+
+        <TextView
+            android:id="@+id/lblChromaEquation"
+            style="@style/txtEquation"
+            android:text="@string/chroma" />
+
+        <LinearLayout
+            android:id="@+id/llhChroma"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblChromaCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblChromaValue"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHuePrimeTitle"
+            style="@style/SectionHeader"
+            android:text="@string/HuePrimeTitle" />
+
+        <TextView
+            android:id="@+id/lblHuePrime"
+            style="@style/txtEquation"
+            android:text="@string/HuePrime" />
+
+        <LinearLayout
+            android:id="@+id/llhHuePrime"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHuePrimeCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblHuePrimeValue"
+                style="@style/txtValueDouble" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblXTitle"
+            style="@style/SectionHeader"
+            android:text="@string/XTitle" />
+
+        <TextView
+            android:id="@+id/lblXEquation"
+            style="@style/txtEquation"
+            android:text="@string/XEquation" />
+
+        <LinearLayout
+            android:id="@+id/llhX"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblXCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblXValue"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPTitle_HSL"
+            style="@style/SectionHeader"
+            android:text="@string/rgbPrimeTitle" />
+
+        <TextView
+            android:id="@+id/lblRGBPH0Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH0"/>
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH0"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBPH0Calc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBPH0Value"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPH1Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH1" />
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH1"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGB1PCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBPH1Value"
+                style="@style/txtValueDouble"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPH2Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH2" />
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH2"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBPH2Calc"
+                style="@style/txtCalculationDouble"/>
+
+            <TextView
+                android:id="@+id/lblRGBPH2Value"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPH3Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH3" />
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH3"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBPH3Calc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBPH3Value"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPH4Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH4" />
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH4"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBPH4Calc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBPH4Value"
+                style="@style/txtValueDouble"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBPH5Equation"
+            style="@style/txtEquation"
+            android:text="@string/rgbPH5" />
+
+        <LinearLayout
+            android:id="@+id/llhRGBPH5"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBPH5Calc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBPH5Value"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblMTitle"
+            style="@style/SectionHeader"
+            android:text="@string/mTitle" />
+
+        <TextView
+            android:id="@+id/lblMEquation"
+            style="@style/txtEquation"
+            android:text="@string/mEquation" />
+
+        <LinearLayout
+            android:id="@+id/llhM"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblMCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblMValue"
+                style="@style/txtValueDouble" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGBTitle"
+            style="@style/SectionHeader"
+            android:text="@string/rgbTitle" />
+
+        <TextView
+            android:id="@+id/lblRGBEquation"
+            style="@style/txtEquation"
+            android:text="@string/rgbEquation" />
+
+        <LinearLayout
+            android:id="@+id/llhRGB"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblRGBCalc"
+                style="@style/txtCalculationDouble" />
+
+            <TextView
+                android:id="@+id/lblRGBValue"
+                style="@style/txtValueDouble"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

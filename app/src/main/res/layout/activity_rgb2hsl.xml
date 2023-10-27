@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".RGB2HSL">
+
+    <LinearLayout
+        android:id="@+id/llvRGB2HSL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lblRGB2HSL"
+            style="@style/PageHeader"
+            android:text="@string/rgb2hsl_title" />
+
+        <Button
+            android:id="@+id/btnSwitchToHSL2RGB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/switchToHSL2RGB" />
+
+        <TableLayout
+            android:id="@+id/tblRGB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/trRGBR"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+                <ImageView
+                    android:id="@+id/imgRGBR"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#FF0000" />
+
+                <SeekBar
+                    android:id="@+id/sbrRGBR"
+                    android:layout_width="310dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/lblRGBRValue"
+                    style="@style/txtValueInteger"
+                    android:layout_gravity="center_vertical" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trRGBG"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+                <ImageView
+                    android:id="@+id/imgRGBG"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#00FF00" />
+
+                <SeekBar
+                    android:id="@+id/sbrRGBG"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/lblRGBGValue"
+                    style="@style/txtValueInteger"
+                    android:layout_gravity="center_vertical" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trRGBB"
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+                <ImageView
+                    android:id="@+id/imgRGBB"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#0000FF" />
+
+                <SeekBar
+                    android:id="@+id/sbrRGBB"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/lblRGBBValue"
+                    style="@style/txtValueInteger"
+                    android:layout_gravity="center_vertical" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/imgColourRGB"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/lblRGBPTitle_RGB"
+            style="@style/SectionHeader"
+            android:text="@string/rgbPrimeTitle" />
+
+        <TableLayout
+            android:id="@+id/tblRGB2HSLPrime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/trRGBRPrime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblRGBRPLabel"
+                    style="@style/txtEquation"
+                    android:layout_width="220dp"
+                    android:text="@string/rPrime" />
+
+                <TextView
+                    android:id="@+id/lblRGBRPValue"
+                    style="@style/txtValueDouble" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trRGBGPrime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblRGBGPLabel"
+                    style="@style/txtEquation"
+                    android:layout_width="220dp"
+                    android:text="@string/gPrime" />
+
+                <TextView
+                    android:id="@+id/lblRGBGPValue"
+                    style="@style/txtValueDouble" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trRGBBPrime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblRGBBPLabel"
+                    style="@style/txtEquation"
+                    android:layout_width="220dp"
+                    android:text="@string/bPrime" />
+
+                <TextView
+                    android:id="@+id/lblRGBBPValue"
+                    style="@style/txtValueDouble" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lblRGB2HSLP"
+            style="@style/SectionHeader"
+            android:text="@string/pTitle" />
+
+        <TableLayout
+            android:id="@+id/tblRGB2HSLP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/trHSLPMax"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblHSLPMaxLabel"
+                    style="@style/txtEquation"
+                    android:layout_width="180dp"
+                    android:text="@string/pMaxLabel" />
+
+                <TextView
+                    android:id="@+id/lblHSLPMaxValue"
+                    style="@style/txtValueDouble" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trHSLPMin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblHSLPMinLabel"
+                    style="@style/txtEquation"
+                    android:text="@string/pMinLabel" />
+
+                <TextView
+                    android:id="@+id/lblHSLPMinValue"
+                    style="@style/txtValueDouble" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trHSLPDelta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lblHSLPDeltaLabel"
+                    style="@style/txtEquation"
+                    android:text="@string/pDeltaLabel" />
+
+                <TextView
+                    android:id="@+id/lblHSLPDeltaValue"
+                    style="@style/txtValueDouble" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lblRGB2HSLH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hslHTitle"
+            style="@style/SectionHeader"/>
+
+        <LinearLayout
+            android:id="@+id/llhHSLH0"
+            style="@style/txtLLH"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHSLH0Equation"
+                style="@style/txtEquation"
+                android:layout_width="335dp"
+                android:text="@string/hslH0" />
+
+            <TextView
+                android:id="@+id/lblHSLH0Value"
+                style="@style/txtValueInteger" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLH0Calc"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/lblHSLHREquation"
+            style="@style/txtEquation"
+            android:text="@string/hslHR" />
+
+        <LinearLayout
+            android:id="@+id/llhHSLHR"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLHRCalc"
+                style="@style/txtCalculationInteger"/>
+
+            <TextView
+                android:id="@+id/lblHSLHRValue"
+                style="@style/txtValueInteger" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLHGEquation"
+            style="@style/txtEquation"
+            android:text="@string/hslHG" />
+
+        <LinearLayout
+            android:id="@+id/llhHSLHG"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLHGCalc"
+                style="@style/txtCalculationInteger" />
+
+            <TextView
+                android:id="@+id/lblHSLHGValue"
+                style="@style/txtValueInteger" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLHBEquation"
+            style="@style/txtEquation"
+            android:text="@string/hslHB" />
+
+        <LinearLayout
+            android:id="@+id/llhHSLHB"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLHBCalc"
+                style="@style/txtCalculationInteger"/>
+
+            <TextView
+                android:id="@+id/lblHSLHBValue"
+                style="@style/txtValueInteger"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRGB2HSLS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hslSTitle"
+            style="@style/SectionHeader"/>
+
+        <LinearLayout
+
+            android:id="@+id/llhHSLS0"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLS0Equation"
+                style="@style/txtEquation"
+                android:layout_width="320dp"
+                android:text="@string/hslSL0" />
+
+            <TextView
+                android:id="@+id/lblHSLS0Value"
+                style="@style/txtValuePercentage" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLS0Calc"
+            android:layout_width="320dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/lblHSLSLLE50Equation"
+            style="@style/txtEquation"
+            android:text="@string/hslSLLE05" />
+
+        <LinearLayout
+            android:id="@+id/llhHSLSLLE50"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLSLLE50Calc"
+                style="@style/txtCalculationPercentage" />
+
+            <TextView
+                android:id="@+id/lblHSLSLLE50Value"
+                style="@style/txtValuePercentage" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLSLGT50Equation"
+            style="@style/txtEquation"
+            android:text="@string/hslSLGT05" />
+
+        <LinearLayout
+            android:id="@+id/llhHSLSLGT50"
+            style="@style/txtLLH" >
+
+            <TextView
+                android:id="@+id/lblHSLSLGT50Calc"
+                style="@style/txtCalculationPercentage" />
+
+            <TextView
+                android:id="@+id/lblHSLSLGT50Value"
+                style="@style/txtValuePercentage" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblHSLLTitle"
+            style="@style/SectionHeader"
+            android:text="@string/hslLTitle" />
+
+        <TextView
+            android:id="@+id/lblHSLLEquation"
+            style="@style/txtEquation"
+            android:text="@string/hslL" />
+
+        <LinearLayout
+            android:id="@+id/llhRGB2HSLL"
+            style="@style/txtLLH">
+
+            <TextView
+                android:id="@+id/lblHSLLCalc"
+                style="@style/txtCalculationPercentage"/>
+
+            <TextView
+                android:id="@+id/lblHSLLValue"
+                style="@style/txtValuePercentage"/>
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/tblRGB2HSLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/trHSLLLabel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/trHSLLCalc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

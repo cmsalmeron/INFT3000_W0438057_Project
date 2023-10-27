@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PageHeader">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#c00000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SectionHeader">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#0040ff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="txtEquation">
+        <item name="android:textColor">#004000</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="txtCalculationDouble">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">220dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="txtCalculationInteger">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">345dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="txtCalculationPercentage">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">330dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="txtValueDouble">
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|end</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right|end</item>
+    </style>
+
+    <style name="txtValueInteger">
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|end</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right|end</item>
+    </style>
+
+    <style name="txtValuePercentage">
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|end</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right|end</item>
+    </style>
+
+    <style name="txtLLH">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+</resources>
