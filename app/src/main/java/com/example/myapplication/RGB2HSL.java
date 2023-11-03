@@ -30,8 +30,8 @@ public class RGB2HSL extends AppCompatActivity {
     public TextView lblRGBBValue;
 
     private static final int SBR_RGB_VALUE_DEFAULT = 0;
-    private static final String DOUBLE_FORMAT_LONG = "%.16f";
-    static final String DOUBLE_FORMAT_SHORT = "%.5f";
+    public static final String DOUBLE_FORMAT_LONG = "%.16f";
+    static final String DOUBLE_FORMAT_SHORT = "%.4f";
     static final int SBR_RGB_VALUE_MAX = 255;
 
     // RGB Values
@@ -45,7 +45,7 @@ public class RGB2HSL extends AppCompatActivity {
     static int RGB_G = 1;
     static int RGB_B = 2;
 
-    // Colour
+    // Colour Box
     View imgColour;
 
     // RGB Prime
@@ -258,24 +258,24 @@ public class RGB2HSL extends AppCompatActivity {
             rgbR = rgbXValue;
             rgbRPrime = Calculations.rgbPrimeValueGet(rgbR);
             lblRGBRValue.setText(Integer.toString(rgbR));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbRPrime));
+            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbRPrime));
         } else if(rgbXFlag == RGB_G) {
             rgbG = rgbXValue;
             rgbGPrime = Calculations.rgbPrimeValueGet(rgbG);
             lblRGBGValue.setText(Integer.toString(rgbG));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbGPrime));
+            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbGPrime));
         } else if(rgbXFlag == RGB_B) {
             rgbB = rgbXValue;
             rgbBPrime = Calculations.rgbPrimeValueGet(rgbB);
             lblRGBBValue.setText(Integer.toString(rgbB));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbBPrime));
+            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbBPrime));
         } else {
             lblRGBRValue.setText(Integer.toString(rgbR));
             lblRGBGValue.setText(Integer.toString(rgbG));
             lblRGBBValue.setText(Integer.toString(rgbB));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbRPrime));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbGPrime));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_LONG, rgbBPrime));
+            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbRPrime));
+            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbGPrime));
+            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbBPrime));
         }
 
         imgColour.setBackgroundColor(Color.rgb(rgbR, rgbG, rgbB));
@@ -302,16 +302,16 @@ public class RGB2HSL extends AppCompatActivity {
         // Get Index for cMax (R, G, B, or NONE) from list; need this to pick proper equation later
         pMaxIndex = Calculations.cMaxIndexGet(rgbPrime);
         pMax = rgbPrime[pMaxIndex];
-        lblHSLPMaxValue.setText(rgbPrimeString[pMaxIndex] + ": " + String.format(DOUBLE_FORMAT_LONG, pMax));
+        lblHSLPMaxValue.setText(rgbPrimeString[pMaxIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMax));
 
         // Get Index for cMix (R, G, B, or None) from list
         pMinIndex = Calculations.cMinIndexGet(rgbPrime);
         pMin = rgbPrime[pMinIndex];
-        lblHSLPMinValue.setText(rgbPrimeString[pMinIndex] + ": " + String.format(DOUBLE_FORMAT_LONG, pMin));
+        lblHSLPMinValue.setText(rgbPrimeString[pMinIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMin));
 
         // Calculate cDelta
         pDelta = pMax - pMin;
-        lblHSLPDeltaValue.setText(String.format(DOUBLE_FORMAT_LONG, pDelta));
+        lblHSLPDeltaValue.setText(String.format(DOUBLE_FORMAT_SHORT, pDelta));
     }
 
     void hslHUpdate() {

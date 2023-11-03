@@ -12,9 +12,9 @@
     <string name="rgb2hsl_title">RGB-to-HSL Equations</string>
     <string name="switchToHSL2RGB">Switch to HSL-to-RGB</string>
     <string name="rgbPrimeTitle">Calculation RGB Prime</string>
-    <string name="rPrime">R\' = R / 255 = </string>
-    <string name="gPrime">G\' = G / 255 = </string>
-    <string name="bPrime">B\' = B / 255 = </string>
+    <string name="rPrime">R\' = R &#xf7; 255 = </string>
+    <string name="gPrime">G\' = G &#xf7; 255 = </string>
+    <string name="bPrime">B\' = B &#xf7; 255 = </string>
     <string name="pTitle">P Values</string>
     <string name="pMaxLabel">P-Max = max(R\', G\', B\'): </string>
     <string name="pMinLabel">P-Min = min(R\', G\', B\'): </string>
@@ -28,10 +28,10 @@
     <string name="hslSTitle">Calculation for Saturation</string>
     <string name="hslSL0">If P-Delta = 0, S = </string>
     <!-- https://www.toptal.com/designers/htmlarrows/math/ -->
-    <string name="hslSLLE05">If P-Delta &#62; 0 and L &#x2264; 50%, S = (P-Delta) / (P-Max + P-Min):</string>
-    <string name="hslSLGT05">If P-Delta &#62; 0 and L &#x3e; 50%, S = (P-Delta) / (2 - P-Max - P-Min):</string>
+    <string name="hslSLLE05">If P-Delta &#62; 0 and L &#x2264; 50%, S = (P-Delta) &#xf7; (P-Max + P-Min):</string>
+    <string name="hslSLGT05">If P-Delta &#62; 0 and L &#x3e; 50%, S = (P-Delta) &#xf7; (2 - P-Max - P-Min):</string>
     <string name="hslLTitle">Calculation for Lightness</string>
-    <string name="hslL">L = (P-Max - P-Min) / 2 = </string>
+    <string name="hslL">L = (P-Max - P-Min) &#xf7; 2 = </string>
 
     <!-- HSL to RGB -->
     <!-- https://www.baeldung.com/cs/convert-color-hsl-rgb -->
@@ -48,9 +48,9 @@
     <string name="rgbPH2">If 2 &#x2264; H\' &#x2264; 3, RGB Prime = (0, C, X):</string>
     <string name="rgbPH3">If 3 &#x2264; H\' &#x2264; 4, RGB Prime = (0, X, C):</string>
     <string name="rgbPH4">If 4 &#x2264; H\' &#x2264; 5, RGB Prime = (X, 0, C):</string>
-    <string name="rgbPH5">If 5 &#x2264; H\' &#x2264; 6, RGB Prime = (C, 0, X):</string>
+    <string name="rgbPH5">If 5 &#x2264; H\' &#x3c; 6, RGB Prime = (C, 0, X):</string>
     <string name="mTitle">Calculation for m</string>
-    <string name="mEquation">m = L - (C / 2): </string>
+    <string name="mEquation">m = L - (C &#xf7; 2): </string>
     <string name="rgbTitle">Calculation for RGB:</string>
     <string name="rgbEquation">(R, G, B) = (R\' + m, G\' + m, B\' + m) &#xd7; 255:</string>
 </resources>

@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         android:background="#000000"
         android:orientation="vertical">
 
@@ -40,14 +40,16 @@
 
                 <SeekBar
                     android:id="@+id/sbrHSLH"
-                    android:layout_width="335dp"
-                    android:layout_height="25dp"
-                    android:progressDrawable="@drawable/hsl_h"
+                    style="@style/seekbarHSL"
+                    android:background="@drawable/hsl_h"
+                    android:progressTint="#000000"
+                    android:scrollbarTrackHorizontal="@drawable/hsl_h"
+                    android:scrollbarTrackVertical="@drawable/hsl_h"
                     android:thumb="@drawable/hsl_thumb" />
 
                 <TextView
                     android:id="@+id/lblHSLHValue"
-                    style="@style/txtValueInteger" />
+                    style="@style/txtValueInteger"/>
 
             </TableRow>
 
@@ -58,15 +60,13 @@
 
                 <SeekBar
                     android:id="@+id/sbrHSLS"
-                    android:layout_width="335dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="5dp"
-                    android:progressDrawable="@drawable/hsl_s"
+                    style="@style/seekbarHSL"
+                    android:background="@drawable/hsl_s"
                     android:thumb="@drawable/hsl_thumb" />
 
                 <TextView
                     android:id="@+id/lblHSLSValue"
-                    style="@style/txtValueInteger" />
+                    style="@style/txtValuePercentage" />
 
             </TableRow>
 
@@ -77,15 +77,13 @@
 
                 <SeekBar
                     android:id="@+id/sbrHSLL"
-                    android:layout_width="335dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="5dp"
-                    android:progressDrawable="@drawable/hsl_l"
+                    style="@style/seekbarHSL"
+                    android:background="@drawable/hsl_l"
                     android:thumb="@drawable/hsl_thumb" />
 
                 <TextView
                     android:id="@+id/lblHSLLValue"
-                    style="@style/txtValueInteger" />
+                    style="@style/txtValuePercentage" />
             </TableRow>
 
         </TableLayout>
@@ -132,25 +130,25 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/lblHuePrimeTitle"
+                    android:id="@+id/lblHPrimeTitle"
                     style="@style/SectionHeader"
                     android:text="@string/HuePrimeTitle" />
 
                 <TextView
-                    android:id="@+id/lblHuePrime"
+                    android:id="@+id/lblHPrime"
                     style="@style/txtEquation"
                     android:text="@string/HuePrime" />
 
                 <LinearLayout
-                    android:id="@+id/llhHuePrime"
+                    android:id="@+id/llhHPrime"
                     style="@style/txtLLH">
 
                     <TextView
-                        android:id="@+id/lblHuePrimeCalc"
+                        android:id="@+id/lblHPrimeCalc"
                         style="@style/txtCalculationDouble" />
 
                     <TextView
-                        android:id="@+id/lblHuePrimeValue"
+                        android:id="@+id/lblHPrimeValue"
                         style="@style/txtValueDouble" />
 
                 </LinearLayout>
@@ -179,9 +177,32 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/lblMTitle"
+                    style="@style/SectionHeader"
+                    android:text="@string/mTitle" />
+
+                <TextView
+                    android:id="@+id/lblMEquation"
+                    style="@style/txtEquation"
+                    android:text="@string/mEquation" />
+
+                <TextView
                     android:id="@+id/lblRGBPTitle_HSL"
                     style="@style/SectionHeader"
                     android:text="@string/rgbPrimeTitle" />
+
+                <LinearLayout
+                    android:id="@+id/llhM"
+                    style="@style/txtLLH">
+
+                    <TextView
+                        android:id="@+id/lblMCalc"
+                        style="@style/txtCalculationDouble" />
+
+                    <TextView
+                        android:id="@+id/lblMValue"
+                        style="@style/txtValueDouble" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/lblRGBPH0Equation"
@@ -211,7 +232,7 @@
                     style="@style/txtLLH">
 
                     <TextView
-                        android:id="@+id/lblRGB1PCalc"
+                        android:id="@+id/lblRGBPH1Calc"
                         style="@style/txtCalculationDouble" />
 
                     <TextView
@@ -288,29 +309,6 @@
 
                     <TextView
                         android:id="@+id/lblRGBPH5Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lblMTitle"
-                    style="@style/SectionHeader"
-                    android:text="@string/mTitle" />
-
-                <TextView
-                    android:id="@+id/lblMEquation"
-                    style="@style/txtEquation"
-                    android:text="@string/mEquation" />
-
-                <LinearLayout
-                    android:id="@+id/llhM"
-                    style="@style/txtLLH">
-
-                    <TextView
-                        android:id="@+id/lblMCalc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblMValue"
                         style="@style/txtValueDouble" />
                 </LinearLayout>
 

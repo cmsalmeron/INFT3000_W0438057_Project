@@ -146,4 +146,44 @@ public class Calculations {
 
         return hslH360;
     }
+
+    static double hslChromaCalculate(int s, int l) {
+        return (1.0 - Math.abs((2.0 * (double)l / PERCENT_CONVERSION) - 1.0)) * ((double)s / PERCENT_CONVERSION);
+    }
+
+    static String chromaCalc(int s, int l) {
+        return "(1 - |(2 × " + l + "%) - 1|) × " + s  + "% =";
+    }
+
+    static double hslHPrimeCalculate(int hslH) {
+        return (double)hslH / (double)HSL_MULTIPLIER;
+    }
+
+    static String hPrimeCalc(int h) {
+        return h + " ÷ " + HSL_MULTIPLIER + " =";
+    }
+
+    static double xCalculate(double chroma, double hPrime) {
+        return chroma * (1.0 - Math.abs((hPrime % 2)) - 1.0);
+    }
+
+    static String xCalc(double chroma, double hPrime) {
+        return String.format(DOUBLE_FORMAT_SHORT, chroma) + " × (1 - |" + String.format(DOUBLE_FORMAT_SHORT, hPrime) + " % 2) - 1|) =";
+    }
+
+    public static String rgbPrimeCalc(double hPrime) {
+        return "H\' = " + String.format(DOUBLE_FORMAT_SHORT, hPrime) + ", ∴ RGB Prime =";
+    }
+
+    public static String rgbPrimeValue(double rPrime, double gPrime, double bPrime) {
+        return "(" + String.format(DOUBLE_FORMAT_SHORT, rPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, gPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, bPrime) + ")";
+    }
+
+    public static double mCalculate(int l, double chroma) {
+        return l - (chroma / 2.0);
+    }
+
+    public static String mCalcWrite(int l, double chroma) {
+        return String.format(DOUBLE_FORMAT_SHORT, l) + " - (" + String.format(DOUBLE_FORMAT_SHORT, chroma) + " / 2)";
+    }
 }
