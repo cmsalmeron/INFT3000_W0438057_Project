@@ -186,11 +186,6 @@
                     style="@style/txtEquation"
                     android:text="@string/mEquation" />
 
-                <TextView
-                    android:id="@+id/lblRGBPTitle_HSL"
-                    style="@style/SectionHeader"
-                    android:text="@string/rgbPrimeTitle" />
-
                 <LinearLayout
                     android:id="@+id/llhM"
                     style="@style/txtLLH">
@@ -205,112 +200,87 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/lblRGBPTitle_HSL"
+                    style="@style/SectionHeader"
+                    android:text="@string/rgbPrimeTitle" />
+
+                <TextView
                     android:id="@+id/lblRGBPH0Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH0" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH0"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH0Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH0Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH0Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH0Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBPH1Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH1" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH1"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH1Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH1Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH1Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH1Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBPH2Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH2" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH2"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH2Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH2Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH2Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH2Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBPH3Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH3" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH3"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH3Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH3Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH3Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH3Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBPH4Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH4" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH4"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH4Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH4Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH4Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH4Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBPH5Equation"
                     style="@style/txtEquation"
                     android:text="@string/rgbPH5" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGBPH5"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBPH5Calc"
+                    style="@style/txtCalculationRGBPrime" />
 
-                    <TextView
-                        android:id="@+id/lblRGBPH5Calc"
-                        style="@style/txtCalculationDouble" />
-
-                    <TextView
-                        android:id="@+id/lblRGBPH5Value"
-                        style="@style/txtValueDouble" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/lblRGBPH5Value"
+                    style="@style/txtValueRGBPrime" />
 
                 <TextView
                     android:id="@+id/lblRGBTitle"
@@ -322,19 +292,15 @@
                     style="@style/txtEquation"
                     android:text="@string/rgbEquation" />
 
-                <LinearLayout
-                    android:id="@+id/llhRGB"
-                    style="@style/txtLLH">
+                <TextView
+                    android:id="@+id/lblRGBCalc"
+                    style="@style/txtCalculationDouble" />
 
-                    <TextView
-                        android:id="@+id/lblRGBCalc"
-                        style="@style/txtCalculationDouble" />
+                <TextView
+                    android:id="@+id/lblRGBValue"
+                    style="@style/txtValueDouble"
+                    android:layout_width="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/lblRGBValue"
-                        style="@style/txtValueDouble"
-                        android:layout_width="wrap_content" />
-                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 

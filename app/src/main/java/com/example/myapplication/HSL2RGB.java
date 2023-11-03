@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,6 +88,16 @@ public class HSL2RGB extends AppCompatActivity {
     TextView[] rgbPrimeCalcs;
     TextView[] rgbPrimeValues;
 
+    // RGB
+    int r;
+    int g;
+    int b;
+    TextView lblRGBCalc;
+    TextView lblRGBValue;
+
+    // Colour Box
+    View imgColourHSL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,8 +141,15 @@ public class HSL2RGB extends AppCompatActivity {
         lblRGBPH5Value = findViewById(R.id.lblRGBPH5Value);
         rgbPrimeValues = new TextView[]{lblRGBPH0Value, lblRGBPH1Value, lblRGBPH2Value, lblRGBPH3Value, lblRGBPH4Value, lblRGBPH5Value};
 
+        // RGB
+        lblRGBCalc = findViewById(R.id.lblRGBCalc);
+        lblRGBValue = findViewById(R.id.lblRGBValue);
+
+        // Colour Box
+        imgColourHSL = findViewById(R.id.imgColourHSL);
+
         // Run initial calculation
-        rgbCalculate();
+        hslConvert();
 
         // Get HSL variables
         sbrHSLH = findViewById(R.id.sbrHSLH);
@@ -221,10 +240,13 @@ public class HSL2RGB extends AppCompatActivity {
 
         }
 
-        rgbCalculate();
+        hslConvert();
     }
 
-    void rgbCalculate() {
+    void hslConvert() {
+        // Set Colour Box
+        imgColourHSL.setBackgroundColor(Color.HSVToColor(imgColourHSLCalculate(h, s, l)));
+
         // Chroma
         chroma = Calculations.hslChromaCalculate(s, l);
 
@@ -237,34 +259,23 @@ public class HSL2RGB extends AppCompatActivity {
         // m
         m = Calculations.mCalculate(l, chroma);
 
-        // Determine which row of RGB Prime to show based on h Prime and add m to each
+        // RGB Prime
+        rgbPrimeCalculate();
+
+        // RGB
+        r = Calculations.rgbCalculate(rPrime);
+        g = Calculations.rgbCalculate(gPrime);
+        b = Calculations.rgbCalculate(bPrime);
 
         // Update display fields
         calculationFieldsUpdate();
     }
 
-    void calculationFieldsUpdate() {
-        // Chroma
-        lblChromaCalc.setText(Calculations.chromaCalc(s, l));
-        lblChromaValue.setText(String.format(DOUBLE_FORMAT_SHORT, chroma));
-
-        // h Prime
-        lblHPrimeCalc.setText(Calculations.hPrimeCalc(h));
-        lblHPrimeValue.setText(String.format(DOUBLE_FORMAT_SHORT, hPrime));
-
-        // X
-        lblXCalc.setText(Calculations.xCalc(chroma, hPrime));
-        lblXValue.setText(String.format(DOUBLE_FORMAT_SHORT, x));
-
-        // m
-        lblMCalc.setText(Calculations.mCalcWrite(l, chroma));
-        lblMValue.setText(String.format(DOUBLE_FORMAT_SHORT, m));
-
-        // RGB Prime
-        rgbPrimeFieldsUpdate();
+    private float[] imgColourHSLCalculate(int h, int s, int l) {
+        return new float[]{(float)h, (float)(s / 100.0), (float)(l / 100.0)};
     }
 
-    void rgbPrimeFieldsUpdate() {
+    void rgbPrimeCalculate() {
         // Get H Prime
         hPrimeIndex = (int)hPrime;
 
@@ -300,22 +311,66 @@ public class HSL2RGB extends AppCompatActivity {
             bPrime = x;
         }
 
+        rPrime += m;
+        gPrime += m;
+        bPrime += m;
+    }
+
+    void calculationFieldsUpdate() {
+        // Chroma
+        lblChromaCalc.setText(Calculations.chromaCalc(s, l));
+        lblChromaValue.setText(String.format(DOUBLE_FORMAT_SHORT, chroma));
+
+        // h Prime
+        lblHPrimeCalc.setText(Calculations.hPrimeCalc(h));
+        lblHPrimeValue.setText(String.format(DOUBLE_FORMAT_SHORT, hPrime));
+
+        // X
+        lblXCalc.setText(Calculations.xCalc(chroma, hPrime));
+        lblXValue.setText(String.format(DOUBLE_FORMAT_SHORT, x));
+
+        // m
+        lblMCalc.setText(Calculations.mCalc(l, chroma));
+        lblMValue.setText(String.format(DOUBLE_FORMAT_SHORT, m));
+
+        // RGB Prime
+        rgbPrimeFieldsUpdate();
+
+        // RGB
+        lblRGBCalc.setText(Calculations.rgbCalc(rPrime, gPrime, bPrime));
+        lblRGBValue.setText(Calculations.rgbValue(r, g, b));
+
+
+    }
+
+    void rgbPrimeFieldsUpdate() {
         // Layout settings to collapse and expand Calcs and Values
-        ViewGroup.LayoutParams layoutCollapsed = new ViewGroup.LayoutParams(0, 0);
+        ViewGroup.LayoutParams layoutParams;
         ViewGroup.LayoutParams layoutExpanded = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         // Reset Calc and Value fields
         for(int i = 0; i <= H_PRIME_INDEX_5; i++) {
             rgbPrimeCalcs[i].setText(null);
-            // rgbPrimeCalcs[i].setLayoutParams(layoutCollapsed);
+            layoutParams = rgbPrimeCalcs[i].getLayoutParams();
+            layoutParams.height = 0;
+            rgbPrimeCalcs[i].setLayoutParams(layoutParams);
+
             rgbPrimeValues[i].setText(null);
-            // rgbPrimeValues[i].setLayoutParams(layoutCollapsed);;
+            layoutParams = rgbPrimeValues[i].getLayoutParams();
+            layoutParams.height = 0;
+            rgbPrimeValues[i].setLayoutParams(layoutParams);
         }
 
         // Set appropriate Calc/Value fields
-        rgbPrimeCalcs[hPrimeIndex].setText(Calculations.rgbPrimeCalc(hPrime));
-        // rgbPrimeCalcs[hPrimeIndex].setLayoutParams(layoutExpanded);
+        // note: use RGB Prime values without m to show calculation
+        rgbPrimeCalcs[hPrimeIndex].setText(Calculations.rgbPrimeCalc(hPrime, rPrime - m, gPrime - m, bPrime - m, m));
+        layoutParams = rgbPrimeCalcs[hPrimeIndex].getLayoutParams();
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        rgbPrimeCalcs[hPrimeIndex].setLayoutParams(layoutParams);
+
         rgbPrimeValues[hPrimeIndex].setText(Calculations.rgbPrimeValue(rPrime, gPrime, bPrime));
-        // rgbPrimeValues[hPrimeIndex].setLayoutParams(layoutExpanded);
+        layoutParams = rgbPrimeValues[hPrimeIndex].getLayoutParams();
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        rgbPrimeValues[hPrimeIndex].setLayoutParams(layoutParams);
     }
 }

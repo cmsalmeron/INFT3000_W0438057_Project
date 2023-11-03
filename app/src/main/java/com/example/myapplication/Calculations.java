@@ -20,6 +20,7 @@ public class Calculations {
     static final int HSL_R_360 = 360;
     static final int HSL_R_300 = 300;
     static final int HSL_L_THRESHOLD = 50;
+    static final double RGB_CONVERSION = 255.0;
     static final double PERCENT_CONVERSION = 100.0;
 
     static double rgbPrimeValueGet(int rgbValue) {
@@ -164,15 +165,17 @@ public class Calculations {
     }
 
     static double xCalculate(double chroma, double hPrime) {
-        return chroma * (1.0 - Math.abs((hPrime % 2)) - 1.0);
+        return chroma * (1.0 - Math.abs((hPrime % 2) - 1.0));
     }
 
     static String xCalc(double chroma, double hPrime) {
         return String.format(DOUBLE_FORMAT_SHORT, chroma) + " × (1 - |" + String.format(DOUBLE_FORMAT_SHORT, hPrime) + " % 2) - 1|) =";
     }
 
-    public static String rgbPrimeCalc(double hPrime) {
-        return "H\' = " + String.format(DOUBLE_FORMAT_SHORT, hPrime) + ", ∴ RGB Prime =";
+    public static String rgbPrimeCalc(double hPrime, double rPrime, double gPrime, double bPrime, double m) {
+        return "H\' = " + String.format(DOUBLE_FORMAT_SHORT, hPrime)
+                + ";\n(" + String.format(DOUBLE_FORMAT_SHORT, rPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, gPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, bPrime) + ")"
+                + " + (" + String.format(DOUBLE_FORMAT_SHORT, m) + ", " + String.format(DOUBLE_FORMAT_SHORT, m) + ", " + String.format(DOUBLE_FORMAT_SHORT, m) + "):";
     }
 
     public static String rgbPrimeValue(double rPrime, double gPrime, double bPrime) {
@@ -180,10 +183,22 @@ public class Calculations {
     }
 
     public static double mCalculate(int l, double chroma) {
-        return l - (chroma / 2.0);
+        return (double)(l / PERCENT_CONVERSION) - (chroma / 2.0);
     }
 
-    public static String mCalcWrite(int l, double chroma) {
-        return String.format(DOUBLE_FORMAT_SHORT, l) + " - (" + String.format(DOUBLE_FORMAT_SHORT, chroma) + " / 2)";
+    public static String mCalc(int l, double chroma) {
+        return l + " - (" + String.format(DOUBLE_FORMAT_SHORT, chroma) + " / 2) =";
+    }
+
+    public static String rgbCalc(double rPrime, double gPrime, double bPrime) {
+        return "(" + String.format(DOUBLE_FORMAT_SHORT, rPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, gPrime) + ", " + String.format(DOUBLE_FORMAT_SHORT, bPrime) + ") × 255 =";
+    }
+
+    public static String rgbValue(int r, int g, int b) {
+        return "(" + r + ", " + g + ", " + b + ")";
+    }
+
+    public static int rgbCalculate(double rPrime) {
+        return (int)(rPrime * RGB_CONVERSION);
     }
 }
