@@ -2,6 +2,11 @@
     <string name="app_name">Colour Converter Help</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Launch Page -->
+    <string name="intro">Welcome! Pick a conversion process to launch:</string>
+    <string name="rgb2hsl_launch">RGB to HSL</string>
+    <string name="hsl2rgb_launch">HSL to RGB</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

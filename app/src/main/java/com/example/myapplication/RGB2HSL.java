@@ -1,5 +1,9 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.HSL2RGB.RGB_B_KEY;
+import static com.example.myapplication.HSL2RGB.RGB_G_KEY;
+import static com.example.myapplication.HSL2RGB.RGB_R_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,8 +16,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class RGB2HSL extends AppCompatActivity {
-
     // Declarations
+
     // Page Switcher
     public Button btnSwitchToHSL2RGB;
     public static final String HSL_H_KEY = "hslH";
@@ -35,9 +39,9 @@ public class RGB2HSL extends AppCompatActivity {
     static final int SBR_RGB_VALUE_MAX = 255;
 
     // RGB Values
-    int rgbR = 0;
-    int rgbG = 0;
-    int rgbB = 0;
+    int r = 0;
+    int g = 0;
+    int b = 0;
 
     // RGB Flags for updating other RGB-based fields and values
     static int RGB_NONE = -1;
@@ -53,9 +57,9 @@ public class RGB2HSL extends AppCompatActivity {
     public TextView lblRGBGPValue;
     public TextView lblRGBBPValue;
 
-    double rgbRPrime = 0.0;
-    double rgbGPrime = 0.0;
-    double rgbBPrime = 0.0;
+    double rPime = 0.0;
+    double gPrime = 0.0;
+    double bPrime = 0.0;
     double[] rgbPrime;
     String[] rgbPrimeString = {"R'", "G'", "B'"};
     static int RGB_PRIME_NONE = -1;
@@ -123,7 +127,58 @@ public class RGB2HSL extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rgb2hsl);
 
+        // Set initial values for RGB
+        // Initial HSL Values
+        r = getIntent().getIntExtra(RGB_R_KEY, 0);
+        g = getIntent().getIntExtra(RGB_G_KEY, 0);
+        b = getIntent().getIntExtra(RGB_B_KEY, 0);
+
+        // Colour Button
+        imgColour = findViewById(R.id.imgColourRGB);
+
+        // RGB Prime
+        lblRGBRPValue = findViewById(R.id.lblRGBRPValue);
+        lblRGBGPValue = findViewById(R.id.lblRGBGPValue);
+        lblRGBBPValue = findViewById(R.id.lblRGBBPValue);
+
+        // P Values
+        lblHSLPMaxValue = findViewById(R.id.lblHSLPMaxValue);
+        lblHSLPMinValue = findViewById(R.id.lblHSLPMinValue);
+        lblHSLPDeltaValue = findViewById(R.id.lblHSLPDeltaValue);
+
+        // HSL Values
+        // HSL: H
+        lblHSLH0Calc = findViewById(R.id.lblHSLH0Calc);
+        lblHSLHRCalc = findViewById(R.id.lblHSLHRCalc);
+        lblHSLHGCalc = findViewById(R.id.lblHSLHGCalc);
+        lblHSLHBCalc = findViewById(R.id.lblHSLHBCalc);
+
+        lblHSLHCalcFields = new TextView[]{lblHSLH0Calc, lblHSLHRCalc, lblHSLHGCalc, lblHSLHBCalc};
+
+        lblHSLH0Value = findViewById(R.id.lblHSLH0Value);
+        lblHSLHRValue = findViewById(R.id.lblHSLHRValue);
+        lblHSLHGValue = findViewById(R.id.lblHSLHGValue);
+        lblHSLHBValue = findViewById(R.id.lblHSLHBValue);
+
+        lblHSLHValueFields = new TextView[]{lblHSLH0Value, lblHSLHRValue, lblHSLHGValue, lblHSLHBValue};
+
+        // HSL: S
+        lblHSLS0Calc = findViewById(R.id.lblHSLS0Calc);
+        lblHSLSLLE50Calc = findViewById(R.id.lblHSLSLLE50Calc);
+        lblHSLSLGT50Calc = findViewById(R.id.lblHSLSLGT50Calc);
+        lblHSLSCalcFields = new TextView[]{lblHSLS0Calc, lblHSLSLLE50Calc, lblHSLSLGT50Calc};
+
+        lblHSLS0Value = findViewById(R.id.lblHSLS0Value);
+        lblHSLSLLE50Value = findViewById(R.id.lblHSLSLLE50Value);
+        lblHSLSLGT50Value = findViewById(R.id.lblHSLSLGT50Value);
+        lblHSLSValueFields = new TextView[]{lblHSLS0Value, lblHSLSLLE50Value, lblHSLSLGT50Value};
+
+        // HSL: L
+        lblHSLLCalc = findViewById(R.id.lblHSLLCalc);
+        lblHSLLValue = findViewById(R.id.lblHSLLValue);
+
         // Definitions
+
         // Switcher
         btnSwitchToHSL2RGB = findViewById(R.id.btnSwitchToHSL2RGB);
 
@@ -202,50 +257,6 @@ public class RGB2HSL extends AppCompatActivity {
             }
         });
 
-        // Colour Button
-        imgColour = findViewById(R.id.imgColourRGB);
-
-        // RGB Prime
-        lblRGBRPValue = findViewById(R.id.lblRGBRPValue);
-        lblRGBGPValue = findViewById(R.id.lblRGBGPValue);
-        lblRGBBPValue = findViewById(R.id.lblRGBBPValue);
-
-        // C Values
-        lblHSLPMaxValue = findViewById(R.id.lblHSLPMaxValue);
-        lblHSLPMinValue = findViewById(R.id.lblHSLPMinValue);
-        lblHSLPDeltaValue = findViewById(R.id.lblHSLPDeltaValue);
-
-        // HSL Values
-        // HSL: H
-        lblHSLH0Calc = findViewById(R.id.lblHSLH0Calc);
-        lblHSLHRCalc = findViewById(R.id.lblHSLHRCalc);
-        lblHSLHGCalc = findViewById(R.id.lblHSLHGCalc);
-        lblHSLHBCalc = findViewById(R.id.lblHSLHBCalc);
-
-        lblHSLHCalcFields = new TextView[]{lblHSLH0Calc, lblHSLHRCalc, lblHSLHGCalc, lblHSLHBCalc};
-
-        lblHSLH0Value = findViewById(R.id.lblHSLH0Value);
-        lblHSLHRValue = findViewById(R.id.lblHSLHRValue);
-        lblHSLHGValue = findViewById(R.id.lblHSLHGValue);
-        lblHSLHBValue = findViewById(R.id.lblHSLHBValue);
-
-        lblHSLHValueFields = new TextView[]{lblHSLH0Value, lblHSLHRValue, lblHSLHGValue, lblHSLHBValue};
-
-        // HSL: S
-        lblHSLS0Calc = findViewById(R.id.lblHSLS0Calc);
-        lblHSLSLLE50Calc = findViewById(R.id.lblHSLSLLE50Calc);
-        lblHSLSLGT50Calc = findViewById(R.id.lblHSLSLGT50Calc);
-        lblHSLSCalcFields = new TextView[]{lblHSLS0Calc, lblHSLSLLE50Calc, lblHSLSLGT50Calc};
-
-        lblHSLS0Value = findViewById(R.id.lblHSLS0Value);
-        lblHSLSLLE50Value = findViewById(R.id.lblHSLSLLE50Value);
-        lblHSLSLGT50Value = findViewById(R.id.lblHSLSLGT50Value);
-        lblHSLSValueFields = new TextView[]{lblHSLS0Value, lblHSLSLLE50Value, lblHSLSLGT50Value};
-
-        // HSL: L
-        lblHSLLCalc = findViewById(R.id.lblHSLLCalc);
-        lblHSLLValue = findViewById(R.id.lblHSLLValue);
-
         // Set RGB and HSL fields to 0 by default
         rgbFieldsUpdate(0, RGB_NONE);
     }
@@ -255,32 +266,35 @@ public class RGB2HSL extends AppCompatActivity {
     void rgbFieldsUpdate(int rgbXValue, int rgbXFlag) {
 
         if(rgbXFlag == RGB_R) {
-            rgbR = rgbXValue;
-            rgbRPrime = Calculations.rgbPrimeValueGet(rgbR);
-            lblRGBRValue.setText(Integer.toString(rgbR));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbRPrime));
+            r = rgbXValue;
+            rPime = Calculations.rgbPrimeValueGet(r);
+            lblRGBRValue.setText(Integer.toString(r));
+            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rPime));
         } else if(rgbXFlag == RGB_G) {
-            rgbG = rgbXValue;
-            rgbGPrime = Calculations.rgbPrimeValueGet(rgbG);
-            lblRGBGValue.setText(Integer.toString(rgbG));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbGPrime));
+            g = rgbXValue;
+            gPrime = Calculations.rgbPrimeValueGet(g);
+            lblRGBGValue.setText(Integer.toString(g));
+            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, gPrime));
         } else if(rgbXFlag == RGB_B) {
-            rgbB = rgbXValue;
-            rgbBPrime = Calculations.rgbPrimeValueGet(rgbB);
-            lblRGBBValue.setText(Integer.toString(rgbB));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbBPrime));
+            b = rgbXValue;
+            bPrime = Calculations.rgbPrimeValueGet(b);
+            lblRGBBValue.setText(Integer.toString(b));
+            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, bPrime));
         } else {
-            lblRGBRValue.setText(Integer.toString(rgbR));
-            lblRGBGValue.setText(Integer.toString(rgbG));
-            lblRGBBValue.setText(Integer.toString(rgbB));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbRPrime));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbGPrime));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rgbBPrime));
+            lblRGBRValue.setText(Integer.toString(r));
+            lblRGBGValue.setText(Integer.toString(g));
+            lblRGBBValue.setText(Integer.toString(b));
+            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rPime));
+            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, gPrime));
+            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, bPrime));
+            sbrRGBR.setProgress(r);
+            sbrRGBG.setProgress(g);
+            sbrRGBB.setProgress(b);
         }
 
-        imgColour.setBackgroundColor(Color.rgb(rgbR, rgbG, rgbB));
+        imgColour.setBackgroundColor(Color.rgb(r, g, b));
 
-        rgbPrime = new double[]{rgbRPrime, rgbGPrime, rgbBPrime};
+        rgbPrime = new double[]{rPime, gPrime, bPrime};
 
         hslCalculate();
     }

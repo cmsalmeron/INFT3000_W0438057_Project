@@ -24,8 +24,7 @@
 
         <Button
             android:id="@+id/btnSwitchToRGB2HSL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:text="@string/switchToRGB2HSL" />
 
         <TableLayout

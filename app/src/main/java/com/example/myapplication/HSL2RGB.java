@@ -1,10 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -17,6 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HSL2RGB extends AppCompatActivity {
     // Declare variables
+
+    // Switch to RGB Button
+    Button btnSwitchToRGB2HSL;
+    public static final String RGB_R_KEY = "rgbR";
+    public static final String RGB_G_KEY = "rgbG";
+    public static final String RGB_B_KEY = "rgbB";
+
+    // Seek Bar
     public SeekBar sbrHSLH;
     public SeekBar sbrHSLS;
     public SeekBar sbrHSLL;
@@ -30,7 +39,7 @@ public class HSL2RGB extends AppCompatActivity {
     public TextView lblHSLLValue;
 
     // Colour Box
-    View imgColour;
+    View imgColourHSL;
 
     // HSL Values
     int h = 0;
@@ -95,13 +104,23 @@ public class HSL2RGB extends AppCompatActivity {
     TextView lblRGBCalc;
     TextView lblRGBValue;
 
-    // Colour Box
-    View imgColourHSL;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hsl2rgb);
+
+        // Switch to RGB
+        btnSwitchToRGB2HSL = findViewById(R.id.btnSwitchToRGB2HSL);
+        btnSwitchToRGB2HSL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchToRGB2HSL = new Intent(HSL2RGB.this, RGB2HSL.class);
+                switchToRGB2HSL.putExtra(RGB_R_KEY, r);
+                switchToRGB2HSL.putExtra(RGB_G_KEY, g);
+                switchToRGB2HSL.putExtra(RGB_B_KEY, b);
+                startActivity(switchToRGB2HSL);
+            }
+        });
 
         // Chroma
         lblChromaCalc = findViewById(R.id.lblChromaCalc);
@@ -147,9 +166,6 @@ public class HSL2RGB extends AppCompatActivity {
 
         // Colour Box
         imgColourHSL = findViewById(R.id.imgColourHSL);
-
-        // Run initial calculation
-        hslConvert();
 
         // Get HSL variables
         sbrHSLH = findViewById(R.id.sbrHSLH);
@@ -223,6 +239,9 @@ public class HSL2RGB extends AppCompatActivity {
 
         lblHSLLValue = findViewById(R.id.lblHSLLValue);
         lblHSLLValue.setText(Integer.toString(l));
+
+        // Run initial calculation
+        hslConvert();
     }
 
     void hslFieldsUpdate(int hslValue, SeekBar hslSeekBar) {
@@ -244,9 +263,6 @@ public class HSL2RGB extends AppCompatActivity {
     }
 
     void hslConvert() {
-        // Set Colour Box
-        imgColourHSL.setBackgroundColor(Color.HSVToColor(imgColourHSLCalculate(h, s, l)));
-
         // Chroma
         chroma = Calculations.hslChromaCalculate(s, l);
 
@@ -340,7 +356,8 @@ public class HSL2RGB extends AppCompatActivity {
         lblRGBCalc.setText(Calculations.rgbCalc(rPrime, gPrime, bPrime));
         lblRGBValue.setText(Calculations.rgbValue(r, g, b));
 
-
+        // Set Colour Box
+        imgColourHSL.setBackgroundColor(Color.rgb(r, g, b));
     }
 
     void rgbPrimeFieldsUpdate() {

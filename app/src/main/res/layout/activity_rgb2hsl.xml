@@ -2,32 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202020"
-    android:fitsSystemWindows="true"
-    tools:context=".RGB2HSL">
+    android:background="#202020">
 
     <LinearLayout
-        android:id="@+id/llvRGB2HSL"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
+        android:id="@+id/llvHSL2RGB"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:background="#000000"
-        android:backgroundTintMode="add"
-        android:fadeScrollbars="true"
-        android:orientation="vertical"
-        android:scrollIndicators="none"
-        android:scrollbarStyle="insideInset"
-        android:verticalScrollbarPosition="defaultPosition"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/lblRGB2HSL"
@@ -36,8 +24,7 @@
 
         <Button
             android:id="@+id/btnSwitchToHSL2RGB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:text="@string/switchToHSL2RGB" />
 
         <TableLayout
@@ -57,7 +44,7 @@
 
                 <SeekBar
                     android:id="@+id/sbrRGBR"
-                    style="@style/seekbar"/>
+                    style="@style/seekbar" />
 
                 <TextView
                     android:id="@+id/lblRGBRValue"
@@ -78,7 +65,7 @@
 
                 <SeekBar
                     android:id="@+id/sbrRGBG"
-                    style="@style/seekbar"/>
+                    style="@style/seekbar" />
 
                 <TextView
                     android:id="@+id/lblRGBGValue"
@@ -99,7 +86,7 @@
 
                 <SeekBar
                     android:id="@+id/sbrRGBB"
-                    style="@style/seekbar"/>
+                    style="@style/seekbar" />
 
                 <TextView
                     android:id="@+id/lblRGBBValue"
@@ -121,7 +108,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
