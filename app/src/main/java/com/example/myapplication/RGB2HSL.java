@@ -258,7 +258,7 @@ public class RGB2HSL extends AppCompatActivity {
         });
 
         // Set RGB and HSL fields to 0 by default
-        rgbFieldsUpdate(0, RGB_NONE);
+        rgbConvert();
     }
 
     // Take input for RGB and update RGB and RGB Prime fields
@@ -268,75 +268,92 @@ public class RGB2HSL extends AppCompatActivity {
         if(rgbXFlag == RGB_R) {
             r = rgbXValue;
             rPime = Calculations.rgbPrimeValueGet(r);
-            lblRGBRValue.setText(Integer.toString(r));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rPime));
         } else if(rgbXFlag == RGB_G) {
             g = rgbXValue;
             gPrime = Calculations.rgbPrimeValueGet(g);
-            lblRGBGValue.setText(Integer.toString(g));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, gPrime));
         } else if(rgbXFlag == RGB_B) {
             b = rgbXValue;
             bPrime = Calculations.rgbPrimeValueGet(b);
-            lblRGBBValue.setText(Integer.toString(b));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, bPrime));
-        } else {
-            lblRGBRValue.setText(Integer.toString(r));
-            lblRGBGValue.setText(Integer.toString(g));
-            lblRGBBValue.setText(Integer.toString(b));
-            lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rPime));
-            lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, gPrime));
-            lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, bPrime));
-            sbrRGBR.setProgress(r);
-            sbrRGBG.setProgress(g);
-            sbrRGBB.setProgress(b);
         }
 
-        imgColour.setBackgroundColor(Color.rgb(r, g, b));
-
-        rgbPrime = new double[]{rPime, gPrime, bPrime};
-
-        hslCalculate();
+        rgbConvert();
     }
 
     // Take Inputs and process calculations
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    void hslCalculate() {
+    void rgbConvert() {
+        rgbPrime = new double[]{rPime, gPrime, bPrime};
+
         // Source: https://www.calculatorology.com/rgb-to-hsv-conversion/
         hslPValuesUpdate();
 
-        hslHUpdate();
+        hslUpdate();
 
-        hslLUpdate();
-
-        hslSUpdate();
+        calculationFieldsUpdate();
     }
 
     void hslPValuesUpdate() {
         // Get Index for cMax (R, G, B, or NONE) from list; need this to pick proper equation later
         pMaxIndex = Calculations.cMaxIndexGet(rgbPrime);
         pMax = rgbPrime[pMaxIndex];
-        lblHSLPMaxValue.setText(rgbPrimeString[pMaxIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMax));
 
         // Get Index for cMix (R, G, B, or None) from list
         pMinIndex = Calculations.cMinIndexGet(rgbPrime);
         pMin = rgbPrime[pMinIndex];
-        lblHSLPMinValue.setText(rgbPrimeString[pMinIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMin));
 
         // Calculate cDelta
         pDelta = pMax - pMin;
+    }
+
+    void hslUpdate() {
+        hslH = Calculations.hslHCalculate(pMaxIndex, pDelta);
+        hslL = Calculations.hslLCalculate(pMax, pMin);
+        hslS = Calculations.hslSCalculate(hslL, pDelta, pMax, pMin);
+    }
+
+    void calculationFieldsUpdate() {
+        // RGB Seekbar
+        calculationFieldsUpdateRGB();
+
+        // Colour box
+        imgColour.setBackgroundColor(Color.rgb(r, g, b));
+
+        // P Values
+        calculationFieldsUpdatePValues();
+
+        // Hue
+        calculationFieldsUpdateHue();
+
+        // Saturation
+        calculationFieldsUpdateSaturation();
+
+        // Lightness
+        calculationFieldsUpdateLightness();
+    }
+
+    void calculationFieldsUpdateRGB() {
+        lblRGBRValue.setText(Integer.toString(r));
+        lblRGBRPValue.setText(String.format(DOUBLE_FORMAT_SHORT, rPime));
+
+        lblRGBGValue.setText(Integer.toString(g));
+        lblRGBGPValue.setText(String.format(DOUBLE_FORMAT_SHORT, gPrime));
+
+        lblRGBBValue.setText(Integer.toString(b));
+        lblRGBBPValue.setText(String.format(DOUBLE_FORMAT_SHORT, bPrime));
+    }
+
+    void calculationFieldsUpdatePValues() {
+        lblHSLPMaxValue.setText(rgbPrimeString[pMaxIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMax));
+        lblHSLPMinValue.setText(rgbPrimeString[pMinIndex] + ": " + String.format(DOUBLE_FORMAT_SHORT, pMin));
         lblHSLPDeltaValue.setText(String.format(DOUBLE_FORMAT_SHORT, pDelta));
     }
 
-    void hslHUpdate() {
-
+    void calculationFieldsUpdateHue() {
         // Set all H fields to blank
         for(int i = 0; i < lblHSLHValueFields.length; i++) {
             lblHSLHValueFields[i].setText("");
             lblHSLHCalcFields[i].setText("");
         }
-
-        hslH = Calculations.hslHCalculate(pMaxIndex, pDelta);
 
         // If cDelta is 0, populate value for 0; else show the equation and answer for H
         if(pDelta == 0.0) {
@@ -345,7 +362,7 @@ public class RGB2HSL extends AppCompatActivity {
             hslH360 = Calculations.hslH360Get(hslH);
             // Set proper H field
             lblHSLHCalcFields[pMaxIndex + 1].setText(
-                    Integer.toString(HSL_MULTIPLIER)
+                    HSL_MULTIPLIER
                             + " * "
                             + "(" + Integer.toString(HSL_ADDITIVE * pMaxIndex)
                             + " + (" + String.format(DOUBLE_FORMAT_SHORT, Calculations.rgbPrimeDifference())
@@ -356,23 +373,13 @@ public class RGB2HSL extends AppCompatActivity {
         }
     }
 
-    void hslLUpdate() {
-        hslL = Calculations.hslLCalculate(pMax, pMin);
-
-        lblHSLLCalc.setText("(" + String.format(DOUBLE_FORMAT_SHORT, pMax) + " - " + String.format(DOUBLE_FORMAT_SHORT, pMin) + ") / 2 = ");
-
-        lblHSLLValue.setText(Integer.toString(hslL) + "%");
-    }
-
-    void hslSUpdate() {
-
+    void calculationFieldsUpdateSaturation() {
         // Set all S fields to blank
         for (int i = 0; i < lblHSLSCalcFields.length; i++) {
             lblHSLSValueFields[i].setText("");
             lblHSLSCalcFields[i].setText("");
         }
 
-        hslS = Calculations.hslSCalculate(hslL, pDelta, pMax, pMin);
         hslSIndex = Calculations.hslSIndexGet(hslL);
         String hslSDenominator = Calculations.hslSDenominatorGet(hslL, pMax, pMin);
 
@@ -388,5 +395,10 @@ public class RGB2HSL extends AppCompatActivity {
                             + ") = ");
             lblHSLSValueFields[hslSIndex].setText(Integer.toString(hslS) + "%");
         }
+    }
+
+    void calculationFieldsUpdateLightness() {
+        lblHSLLCalc.setText("(" + String.format(DOUBLE_FORMAT_SHORT, pMax) + " - " + String.format(DOUBLE_FORMAT_SHORT, pMin) + ") / 2 = ");
+        lblHSLLValue.setText(Integer.toString(hslL) + "%");
     }
 }

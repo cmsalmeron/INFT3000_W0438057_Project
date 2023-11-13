@@ -255,8 +255,6 @@ public class HSL2RGB extends AppCompatActivity {
         } else if(hslSeekBar == sbrHSLL) {
             lblHSLLValue.setText(Integer.toString(hslValue) + "%");
             l = hslValue;
-        } else {
-
         }
 
         hslConvert();
