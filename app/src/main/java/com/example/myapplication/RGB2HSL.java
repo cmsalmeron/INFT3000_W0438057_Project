@@ -257,7 +257,9 @@ public class RGB2HSL extends AppCompatActivity {
             }
         });
 
-        // Set RGB and HSL fields to 0 by default
+        // Set RGB and HSL values based on intent file
+        sbrRGBSet();
+
         rgbConvert();
     }
 
@@ -400,5 +402,11 @@ public class RGB2HSL extends AppCompatActivity {
     void calculationFieldsUpdateLightness() {
         lblHSLLCalc.setText("(" + String.format(DOUBLE_FORMAT_SHORT, pMax) + " - " + String.format(DOUBLE_FORMAT_SHORT, pMin) + ") / 2 = ");
         lblHSLLValue.setText(Integer.toString(hslL) + "%");
+    }
+
+    private void sbrRGBSet() {
+        sbrRGBR.setProgress(r);
+        sbrRGBG.setProgress(g);
+        sbrRGBB.setProgress(b);
     }
 }

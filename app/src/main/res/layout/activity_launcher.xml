@@ -17,6 +17,7 @@
         <TextView
             android:id="@+id/lblIntro"
             style="@style/SectionHeader"
+            android:gravity="center_horizontal"
             android:text="@string/intro" />
 
         <Button
