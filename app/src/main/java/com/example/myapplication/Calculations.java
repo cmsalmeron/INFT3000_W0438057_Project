@@ -17,6 +17,7 @@ public class Calculations {
     static double rgbGPrimeInput;
     static double rgbBPrimeInput;
     static double rgbPrimeDifference;
+    static String rgbPrimeDifferenceString = "";
     static final int HSL_R_360 = 360;
     static final int HSL_R_300 = 300;
     static final int HSL_L_THRESHOLD = 50;
@@ -37,12 +38,15 @@ public class Calculations {
         if ((rgbRPrimeInput >= rgbGPrimeInput) && (rgbRPrimeInput >= rgbBPrimeInput)) {
             cMaxIndexCurrent = RGB_PRIME_R;
             rgbPrimeDifference = rgbGPrimeInput - rgbBPrimeInput;
+            rgbPrimeDifferenceStringDefine(rgbGPrimeInput, rgbBPrimeInput);
         } else if ((rgbGPrimeInput >= rgbRPrimeInput) && (rgbGPrimeInput >= rgbBPrimeInput)) {
             cMaxIndexCurrent = RGB_PRIME_G;
             rgbPrimeDifference = rgbBPrimeInput - rgbRPrimeInput;
+            rgbPrimeDifferenceStringDefine(rgbBPrimeInput, rgbRPrimeInput);
         } else if ((rgbBPrimeInput >= rgbRPrimeInput) && (rgbBPrimeInput >= rgbGPrimeInput)) {
             cMaxIndexCurrent = RGB_PRIME_B;
             rgbPrimeDifference = rgbRPrimeInput - rgbGPrimeInput;
+            rgbPrimeDifferenceStringDefine(rgbRPrimeInput, rgbGPrimeInput);
         } else {
             cMaxIndexCurrent = RGB_PRIME_NONE;
             rgbPrimeDifference = 0.0;
@@ -71,6 +75,18 @@ public class Calculations {
     //This changes depending on pMaxIndex (whichever prime is the chosen prime)
     static double rgbPrimeDifference() {
         return rgbPrimeDifference;
+    }
+
+    static void rgbPrimeDifferenceStringDefine(double rgbPrimeInput1, double rgbPrimeInput2) {
+
+        rgbPrimeDifferenceString =
+                String.format(DOUBLE_FORMAT_SHORT, rgbPrimeInput1)
+                + " - "
+                + String.format(DOUBLE_FORMAT_SHORT, rgbPrimeInput2);
+    }
+
+    static String rgbPrimeDifferenceStringGet() {
+        return rgbPrimeDifferenceString;
     }
 
     static int hslHCalculate(int pMaxIndexInput, double pDeltaInput) {

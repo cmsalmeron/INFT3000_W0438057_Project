@@ -366,8 +366,8 @@ public class RGB2HSL extends AppCompatActivity {
             lblHSLHCalcFields[pMaxIndex + 1].setText(
                     HSL_MULTIPLIER
                             + " * "
-                            + "(" + Integer.toString(HSL_ADDITIVE * pMaxIndex)
-                            + " + (" + String.format(DOUBLE_FORMAT_SHORT, Calculations.rgbPrimeDifference())
+                            + "(" + (HSL_ADDITIVE * pMaxIndex)
+                            + " + (" + Calculations.rgbPrimeDifferenceStringGet()
                             + " / (" + String.format(DOUBLE_FORMAT_SHORT, pDelta) + ")))"
                             + hslH360
                             + " = ");
