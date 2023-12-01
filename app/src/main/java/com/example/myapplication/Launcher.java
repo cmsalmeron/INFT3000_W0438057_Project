@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class StartPage extends AppCompatActivity {
+public class Launcher extends AppCompatActivity {
     Button btnRGB2HSL;
     Button btnHSL2RGB;
 
@@ -28,7 +28,7 @@ public class StartPage extends AppCompatActivity {
         btnRGB2HSL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchToRGB2HSL = new Intent(StartPage.this, RGB2HSL.class);
+                Intent switchToRGB2HSL = new Intent(Launcher.this, RGB2HSL.class);
                 switchToRGB2HSL.putExtra(RGB_R_KEY, 0);
                 switchToRGB2HSL.putExtra(RGB_G_KEY, 0);
                 switchToRGB2HSL.putExtra(RGB_B_KEY, 0);
@@ -41,7 +41,7 @@ public class StartPage extends AppCompatActivity {
         btnHSL2RGB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent switchToHSL2RGB = new Intent(StartPage.this, HSL2RGB.class);
+                Intent switchToHSL2RGB = new Intent(Launcher.this, HSL2RGB.class);
                 switchToHSL2RGB.putExtra(HSL_H_KEY, 0);
                 switchToHSL2RGB.putExtra(HSL_S_KEY, 0);
                 switchToHSL2RGB.putExtra(HSL_L_KEY, 0);

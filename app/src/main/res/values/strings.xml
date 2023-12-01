@@ -25,21 +25,21 @@
     <string name="pMinLabel">P-Min = min(R\', G\', B\'): </string>
     <string name="pDeltaLabel">P-Delta = P-Max - P-Min: </string>
     <string name="hslHTitle">Calculation for Hue</string>
-    <!-- https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/ -->
+    <!-- Source: https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/ -->
     <string name="hslH0">If P-Max = 0, H = </string>
     <string name="hslHR">If P-Max = R\', H = 60 * (0 + (G\' - B\') / P-Delta) (+ 360):</string>
     <string name="hslHG">If P-Max = G\', H = 60 * (2 + (B\' - R\') / P-Delta):</string>
     <string name="hslHB">If P-Max = B\', H = 60 * (4 + (R\' - G\') / P-Delta):</string>
     <string name="hslSTitle">Calculation for Saturation</string>
     <string name="hslSL0">If P-Delta = 0, S = </string>
-    <!-- https://www.toptal.com/designers/htmlarrows/math/ -->
+    <!-- Source: https://www.toptal.com/designers/htmlarrows/math/ -->
     <string name="hslSLLE05">If P-Delta &#62; 0 and L &#x2264; 50%, S = (P-Delta) &#xf7; (P-Max + P-Min):</string>
     <string name="hslSLGT05">If P-Delta &#62; 0 and L &#x3e; 50%, S = (P-Delta) &#xf7; (2 - P-Max - P-Min):</string>
     <string name="hslLTitle">Calculation for Lightness</string>
     <string name="hslL">L = (P-Max - P-Min) &#xf7; 2 = </string>
 
     <!-- HSL to RGB -->
-    <!-- https://www.baeldung.com/cs/convert-color-hsl-rgb -->
+    <!-- Source: https://www.baeldung.com/cs/convert-color-hsl-rgb -->
     <string name="hsl2rgb_title">HSL-to-RGB Equations</string>
     <string name="switchToRGB2HSL">Switch to RGB-to-HSL</string>
     <string name="chromaTitle">Calculation for Chroma</string>
@@ -48,11 +48,11 @@
     <string name="HuePrime">H\' = H / 60:</string>
     <string name="XTitle">Calculation for X</string>
     <string name="XEquation">X = C &#xd7; (1 - |(H\' % 2) - 1|):</string>
-    <string name="rgbPH0">If 0 &#x2264; H\' &#x2264; 1, RGB Prime = (C, X, 0) + (m, m, m):</string>
-    <string name="rgbPH1">If 1 &#x2264; H\' &#x2264; 2, RGB Prime = (X, C, 0) + (m, m, m):</string>
-    <string name="rgbPH2">If 2 &#x2264; H\' &#x2264; 3, RGB Prime = (0, C, X) + (m, m, m):</string>
-    <string name="rgbPH3">If 3 &#x2264; H\' &#x2264; 4, RGB Prime = (0, X, C) + (m, m, m):</string>
-    <string name="rgbPH4">If 4 &#x2264; H\' &#x2264; 5, RGB Prime = (X, 0, C) + (m, m, m):</string>
+    <string name="rgbPH0">If 0 &#x2264; H\' &#x2264; 1, RGB\' = (C, X, 0) + (m, m, m):</string>
+    <string name="rgbPH1">If 1 &#x2264; H\' &#x2264; 2, RGB\' = (X, C, 0) + (m, m, m):</string>
+    <string name="rgbPH2">If 2 &#x2264; H\' &#x2264; 3, RGB\' = (0, C, X) + (m, m, m):</string>
+    <string name="rgbPH3">If 3 &#x2264; H\' &#x2264; 4, RGB\' = (0, X, C) + (m, m, m):</string>
+    <string name="rgbPH4">If 4 &#x2264; H\' &#x2264; 5, RGB\' = (X, 0, C) + (m, m, m):</string>
     <string name="rgbPH5">If 5 &#x2264; H\' &#x3c; 6, RGB Prime = (C, 0, X):</string>
     <string name="mTitle">Calculation for m</string>
     <string name="mEquation">m = L - (C &#xf7; 2): </string>

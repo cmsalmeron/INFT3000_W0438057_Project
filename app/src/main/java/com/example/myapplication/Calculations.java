@@ -72,11 +72,6 @@ public class Calculations {
         return cMinIndexCurrent;
     }
 
-    //This changes depending on pMaxIndex (whichever prime is the chosen prime)
-    static double rgbPrimeDifference() {
-        return rgbPrimeDifference;
-    }
-
     static void rgbPrimeDifferenceStringDefine(double rgbPrimeInput1, double rgbPrimeInput2) {
 
         rgbPrimeDifferenceString =
@@ -95,7 +90,7 @@ public class Calculations {
         if(pDeltaInput == 0.0) {
             hslH = 0;
         } else {
-            //Equation from https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
+            // Source: Equation from https://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
             hslH = (int)Math.round(((double)HSL_MULTIPLIER * ((HSL_ADDITIVE * pMaxIndexInput) + (rgbPrimeDifference / pDeltaInput))));
 
             if(hslH < 0) {
